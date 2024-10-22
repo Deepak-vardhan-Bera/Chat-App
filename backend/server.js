@@ -28,6 +28,7 @@ app.use(cors({
   }));
  
   const __dirname = path.resolve();
+  // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
   console.log(__dirname);
   
 app.use('/api/auth',authRouter)
