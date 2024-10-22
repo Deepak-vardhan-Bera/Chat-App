@@ -7,7 +7,7 @@ import authRouter from './routes/authRouter.routes.js'
 import messageRouter from './routes/message.router.js'
 import userRouter from './routes/user.router.js'
 
-import { connectDB } from './Db/ConnectDb.js';
+import { connectDB } from './db/ConnectDb.js';
 
 import { app,server } from './socket/socket.js'
 
@@ -23,12 +23,11 @@ const PORT=process.env.PORT||9000
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: 'http://localhost:5173', 
+    origin: 'https://chat-app-deepak-0ggt.onrender.com', 
     credentials: true 
   }));
  
   const __dirname = path.resolve();
-  // PORT should be assigned after calling dotenv.config() because we need to access the env variables. Didn't realize while recording the video. Sorry for the confusion.
   console.log(__dirname);
   
 app.use('/api/auth',authRouter)
