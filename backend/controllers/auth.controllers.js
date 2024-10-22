@@ -63,8 +63,8 @@ export const signup = async (req, res) => {
     }
 
     const avatarLink = gender === "male"
-      ? `https://avatar.iran.liara.run/public/boy`
-      : `https://avatar.iran.liara.run/public/girl`;
+      ? `https://avatar.iran.liara.run/public/boy?username=${username}`
+      : `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
     const hashedPassword = await bcryptjs.hash(password, 10);
 
@@ -167,22 +167,26 @@ export const resetPassword = async (req, res) => {
 };
 
 export const checkAuth = async (req, res) => {
-  const { userId } = req.userId;
+  const userId = req.userId; 
   try {
-    const user = await User.findOne({ userId });
-    if (!user)
-      return res.status(401).json({ success: false, message: "unauthorized" });
-    return res
-      .status(200)
-      .json({
-        success: true,
-        message: "user authorized",
-        user: { ...user._doc, password: undefined },
-      });
+    const user = await User.findById(userId); 
+
+    // console.log(user);
+
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Unauthorized" });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "User authorized",
+      user: { ...user._doc, password: undefined },  
+    });
   } catch (error) {
-    res.status(400).json({ success: false, message: "server error", error });
+    res.status(400).json({ success: false, message: "Server error", error });
   }
 };
+
 
 
 export const logout = async (req, res) => {

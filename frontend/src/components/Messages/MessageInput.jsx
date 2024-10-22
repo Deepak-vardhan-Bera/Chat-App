@@ -1,20 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { SendHorizontal } from 'lucide-react';
+import { messageStore } from '../../Stores/messageStore';
 
 const MessageInput = () => {
+
+  const [message, setmessage] = useState('')
+
+
+const {sendMessage,chatwithid,getMessages}=messageStore()
+  const handleSubmit=async(e)=>{
+   await sendMessage(message,chatwithid)
+   setmessage('')
+   await getMessages(chatwithid)
+  }
   return (
     
-        <form >
+
     <div  className='flex flex-row gap-2 p-1'>
-        <input type="text" placeholder="Type here" className="w-full input input-bordered" />
+       <input 
+        value={message}
+        onChange={(e)=>{setmessage(e.target.value)}} type="text" placeholder="Type here" className="w-full input input-bordered" />
         <button
-        type='submit'
+        type='button'
+        onClick={(e)=>handleSubmit(e)}
          className="btn btn-md"         
-         > <SendHorizontal className='text-emerald-400'/></button>
+         > 
+         <SendHorizontal className='text-emerald-400'/></button>
        
-    </div>
-            </form>
+    </div> 
+           
   )
 }
 
