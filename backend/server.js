@@ -29,7 +29,7 @@ app.use(cookieParser());
 
 // Serve static files
 const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.use(express.static(path.join(__dirname, "./frontend/dist")));
 
 // Define routes
 app.use('/api/auth', authRouter);
