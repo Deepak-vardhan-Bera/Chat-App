@@ -3,7 +3,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = `http://localhost:9000/api/`;
+const API_URL = `https://chat-app-deepak-y3t6.onrender.com/api/`;
 
 axios.defaults.withCredentials = true;
 

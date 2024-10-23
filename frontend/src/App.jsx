@@ -52,7 +52,7 @@ useEffect(() => {
     
 
     if (user) {
-      const socket = io('https://chat-app-deepak-0ggt.onrender.com', {
+      const socket = io('https://chat-app-deepak-y3t6.onrender.com', {
         query: { userId: user?._id },
       });
 

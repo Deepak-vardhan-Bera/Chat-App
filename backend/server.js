@@ -17,7 +17,8 @@ const PORT = process.env.PORT || 9000;
 const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
-    'https://chat-app-deepak-0ggt.onrender.com'
+    'https://chat-app-deepak-0ggt.onrender.com',
+    `https://chat-app-deepak-y3t6.onrender.com`
 ];
 
 app.use(cors({
