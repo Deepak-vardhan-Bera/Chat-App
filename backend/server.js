@@ -1,4 +1,3 @@
-
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -18,13 +17,23 @@ const allowedOrigins = [
     'http://localhost:5173',
     'http://localhost:5174',
     'https://chat-app-deepak-0ggt.onrender.com',
-    `https://chat-app-deepak-y3t6.onrender.com`
+    'https://chat-app-deepak-y3t6.onrender.com',
+    'https://6718a281e99ca7589d6beda2--quiet-otter-2cf33d.netlify.app'
 ];
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true); // Allow requests with no origin
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     credentials: true
 }));
+
+app.options('*', cors()); // Handle preflight requests
 
 app.use(express.json());
 app.use(cookieParser());
@@ -52,5 +61,5 @@ app.use((err, req, res, next) => {
 // Start server
 server.listen(PORT, () => {
     connectDB();
-    console.log("PORT Running On ", PORT);
+    console.log("Server running on port", PORT);
 });
