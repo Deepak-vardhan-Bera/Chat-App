@@ -9,6 +9,8 @@ const io = new Server(server, {
 	cors: {
 		origin: ["https://chat-app-deepak-y3t6.onrender.com"],
 		methods: ["GET", "POST"],
+		allowedHeaders: ['Authorization'],
+		credentials: true
 	},
 });
 
