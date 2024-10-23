@@ -54,6 +54,8 @@ useEffect(() => {
     if (user) {
       const socket = io('https://chat-app-deepak-y3t6.onrender.com', {
         query: { userId: user?._id },
+      },{
+        withCredentials: true
       });
 
       

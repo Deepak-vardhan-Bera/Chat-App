@@ -18,7 +18,8 @@ const allowedOrigins = [
     'http://localhost:5174',
     'https://chat-app-deepak-0ggt.onrender.com',
     'https://chat-app-deepak-y3t6.onrender.com',
-    'https://6718a281e99ca7589d6beda2--quiet-otter-2cf33d.netlify.app'
+    'https://6718a281e99ca7589d6beda2--quiet-otter-2cf33d.netlify.app',
+    'https://chat-app-deepak03.netlify.app/login'
 ];
 
 app.use(cors({
